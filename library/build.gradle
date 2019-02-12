@@ -1,14 +1,12 @@
 apply plugin: 'com.android.library'
-apply plugin: 'com.github.ben-manes.versions'
-apply from: '../build-config/gradle-quality.gradle'
+apply plugin: 'com.github.dcendents.android-maven'
 
-archivesBaseName = 'android-job'
+group = 'com.github.venator85'
 
 dependencies {
     compileOnly "com.google.android.gms:play-services-gcm:$playServicesVersion"
 
-    //noinspection GradleCompatible,GradleDependency
-    api "com.android.support:support-compat:$supportLibVersion"
+    api "com.android.support:support-v4:$supportLibVersion"
 
     androidTestImplementation 'com.android.support.test:runner:1.0.1'
     androidTestImplementation 'com.android.support.test:rules:1.0.1'
@@ -27,7 +25,6 @@ dependencies {
 
 android {
     compileSdkVersion rootProject.ext.compileSdkVersion
-    buildToolsVersion rootProject.ext.buildToolsVersion
 
     resourcePrefix 'job_'
 
@@ -62,5 +59,3 @@ android {
         }
     }
 }
-
-apply from: '../build-config/gradle-push.gradle'
